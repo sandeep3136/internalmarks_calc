@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internals Calculator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #ffffff 0%, #99ffcc 100%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Internal Marks Calculator</h1>
+    <h2 >Enter subjective marks</h2>
+    <input type="text" id ="sM">
+    <h2 >Enter objective marks</h2>
+    <input type="text" id ="oM">
+    <h2 >Enter attendence and assignment marks</h2>
+    <input type="text" id ="aM"> 
+    <br>
+    <button id="btnEvaluate">Evaluate</button>
+    <h2 id="heading"></h2>
+    <script>
+        const btn = document.querySelector("#btnEvaluate");
+        const sMEle = document.querySelector("#sM");
+        const oMEle = document.querySelector("#oM");
+        const aMEle = document.querySelector("#aM");
+        const headingEl = document.querySelector("#heading");
+        btn.addEventListener("click", Evaluate, false);
+        
+
+        function Evaluate() {
+            let totalMarks = 0
+
+            // const inputElement = document.querySelector("#inputAmount");
+
+            // const txtAmount = inputElement.value;
+            const sMarks = sMEle.value
+            const oMarks = oMEle.value
+            const aMarks = aMEle.value
+
+            // inputElement.value = ""
+            const sm = parseInt(sMarks, 10);
+            const om = parseInt(oMarks, 10);
+            const am = parseInt(aMarks, 10);
+            const sm_scaled = sm*(2/3);
+            const om_scaled = om/2;
+
+            totalMarks = sm_scaled + om_scaled + am;
+            sMEle.value="";
+            oMEle.value="";
+            aMEle.value="";
+
+         
+            headingEl.textContent = totalMarks;
+            
+        }
+
+
+     
+
+    </script>
+    
+</body>
+</html>
